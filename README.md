@@ -1,10 +1,10 @@
-# amaysim/serverless
+# avonnadozie/serverless
 
 [![npm](https://img.shields.io/npm/v/serverless)](https://www.npmjs.com/package/serverless)
-[![deploy status](https://github.com/amaysim-au/docker-serverless/workflows/Deploy/badge.svg)](https://github.com/amaysim-au/docker-serverless/actions)
-[![image version](https://img.shields.io/docker/v/amaysim/serverless?label=image%20version)](https://hub.docker.com/r/amaysim/serverless)
-[![docker pulls](https://img.shields.io/docker/pulls/amaysim/serverless)](https://hub.docker.com/r/amaysim/serverless)
-[![docker image size](https://img.shields.io/docker/image-size/amaysim/serverless)](https://hub.docker.com/r/amaysim/serverless)
+[![deploy status](https://github.com/avonnadozie-au/docker-serverless/workflows/Deploy/badge.svg)](https://github.com/avonnadozie-au/docker-serverless/actions)
+[![image version](https://img.shields.io/docker/v/avonnadozie/serverless?label=image%20version)](https://hub.docker.com/r/avonnadozie/serverless)
+[![docker pulls](https://img.shields.io/docker/pulls/avonnadozie/serverless)](https://hub.docker.com/r/avonnadozie/serverless)
+[![docker image size](https://img.shields.io/docker/image-size/avonnadozie/serverless)](https://hub.docker.com/r/avonnadozie/serverless)
 [![License](https://img.shields.io/dub/l/vibe-d.svg)](LICENSE)
 
 [![Serverless Application Framework AWS Lambda API Gateway](./assets/serverless-framework.png)](http://serverless.com)
@@ -17,7 +17,7 @@ Docker image containing NodeJS, Serverless Framework and Yarn.
 
 ```bash
 # running Serverless version 1.72.0
-$ docker run --rm amaysim/serverless:1.72.0 serverless --help
+$ docker run --rm avonnadozie/serverless:1.72.0 serverless --help
 ```
 
 ### Build image locally
@@ -37,7 +37,7 @@ $ make shell
 
 ## Docker image update automation
 
-Periodically, once a week, a new amaysim/serverless Docker image containing the lastest version of Serverless is being built with [GitHub Actions](https://github.com/amaysim-au/docker-serverless/actions). This means that there is no need for someone to manually update and tag the image whenever there is a new Serverless version.
+Periodically, once a week, a new avonnadozie/serverless Docker image containing the lastest version of Serverless is being built with [GitHub Actions](https://github.com/avonnadozie-au/docker-serverless/actions). This means that there is no need for someone to manually update and tag the image whenever there is a new Serverless version.
 
 ## Contributing
 

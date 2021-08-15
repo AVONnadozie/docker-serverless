@@ -3,7 +3,9 @@ FROM node:lts-alpine
 # SERVERLESS_VERSION is set explicitly in the Makefile used to build, otherwise
 # use latest version.
 ARG SERVERLESS_VERSION=latest
+ARG SERVERLESS_OFFLINE_VERSION=latest
 ENV SERVERLESS_VERSION $SERVERLESS_VERSION
+ENV SERVERLESS_OFFLINE_VERSION $SERVERLESS_OFFLINE_VERSION
 
 RUN apk --no-cache add python python3 python3-dev py-pip ca-certificates groff less bash make jq curl wget g++ zip git openssh && \
     pip --no-cache-dir install awscli && \
@@ -27,5 +29,6 @@ RUN ln -sf /opt/yarn/dist/bin/yarn /usr/local/bin/yarn && \
   yarn --version
 
 RUN yarn global add serverless@$SERVERLESS_VERSION
+RUN yarn global add serverless-offline@$SERVERLESS_OFFLINE_VERSION
 
 WORKDIR /opt/app
