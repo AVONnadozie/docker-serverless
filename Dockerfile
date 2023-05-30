@@ -1,34 +1,15 @@
-FROM node:lts-alpine
+FROM node:18-alpine
 
 # SERVERLESS_VERSION is set explicitly in the Makefile used to build, otherwise
 # use latest version.
 ARG SERVERLESS_VERSION=latest
-ARG SERVERLESS_OFFLINE_VERSION=latest
+#ARG SERVERLESS_OFFLINE_VERSION=latest
 ENV SERVERLESS_VERSION $SERVERLESS_VERSION
-ENV SERVERLESS_OFFLINE_VERSION $SERVERLESS_OFFLINE_VERSION
+#ENV SERVERLESS_OFFLINE_VERSION $SERVERLESS_OFFLINE_VERSION
 
-RUN apk --no-cache add python python3 python3-dev py-pip ca-certificates groff less bash make jq curl wget g++ zip git openssh && \
-    pip --no-cache-dir install awscli && \
-    update-ca-certificates
-
-RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
-    wget -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-2.25-r0.apk && \
-    apk add glibc-2.25-r0.apk && \
-    rm -f glibc-2.25-r0.apk
-
-RUN mkdir -p /tmp/yarn && \
-    mkdir -p /opt/yarn/dist && \
-    cd /tmp/yarn && \
-    wget -q https://yarnpkg.com/latest.tar.gz && \
-    tar zvxf latest.tar.gz && \
-    find /tmp/yarn -maxdepth 2 -mindepth 2 -exec mv {} /opt/yarn/dist/ \; && \
-    rm -rf /tmp/yarn
-
-RUN ln -sf /opt/yarn/dist/bin/yarn /usr/local/bin/yarn && \
-  ln -sf /opt/yarn/dist/bin/yarn /usr/local/bin/yarnpkg && \
-  yarn --version
-
-RUN yarn global add serverless@$SERVERLESS_VERSION
-RUN yarn global add serverless-offline@$SERVERLESS_OFFLINE_VERSION
+RUN apk update
+RUN apk add --no-cache nano less curl python3 git wget pkgconf pixman-dev python3-dev py-pip ca-certificates groff bash make jq g++ zip git openssh
+RUN npm install -g serverless@$SERVERLESS_VERSION
+RUN npm install -g serverless-offline
 
 WORKDIR /opt/app
