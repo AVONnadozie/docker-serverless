@@ -9,6 +9,9 @@ ENV SERVERLESS_VERSION $SERVERLESS_VERSION
 
 RUN apk update
 RUN apk add --no-cache nano less curl python3 git wget pkgconf pixman-dev python3-dev py-pip ca-certificates groff bash make jq g++ zip git openssh
+RUN pip --no-cache-dir install awscli && \
+    update-ca-certificates
+
 RUN npm install -g serverless@$SERVERLESS_VERSION
 RUN npm install -g serverless-offline
 
